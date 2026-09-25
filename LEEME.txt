@@ -1,0 +1,21 @@
+VISION · Centro de marca con asistente guiado
+
+Descomprime la carpeta VISION completa y abre index.html en tu navegador.
+
+ASISTENTE SIN IA
+Elige una situación, cliente, marca, servicio y objetivo. Recibirás recomendaciones preparadas, un mensaje que puedes editar y enlaces a las herramientas adecuadas. No usa OpenAI, Gemini, API ni servidor. No envía mensajes automáticamente.
+
+Puedes copiar textos, descargar una nota y continuar a la siguiente etapa. Los datos, borradores y casillas marcadas se guardan en el mismo navegador; no se sincronizan con otros dispositivos. Antes de limpiar los datos de un cliente, descarga la nota si quieres conservarla.
+
+HERRAMIENTAS INTEGRADAS
+- Cotizador: 8 plantillas, incluida TikTok, edición y exportación PDF.
+- Condiciones: edición de textos y datos del cliente, guardar HTML y PDF.
+- Presentación: 12 diapositivas y botón de descarga directa del PDF integrado.
+- PDF de presentación listo para enviar.
+- Brochure anterior con recursos y enlaces a Canva, conservado por separado.
+- Identidad, publicaciones y embajadora.
+
+FUNCIONAMIENTO
+Las herramientas y archivos locales funcionan sin internet. Canva, WhatsApp y otros enlaces externos necesitan conexión. Mantén la estructura de carpetas para que los enlaces funcionen.
+
+Revisa alcance, precio y condiciones antes de enviar cualquier propuesta. Los documentos son editables: comprueba que sus horarios y compromisos coincidan. Las métricas referenciales de la presentación son ejemplos, no resultados garantizados.

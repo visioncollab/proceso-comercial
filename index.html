@@ -1,150 +1,145 @@
 <!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#4a2fc0">
-  <title>VISION | Proceso Comercial</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta content="#6220B5" name="theme-color">
+<title>VISION · Centro de marca y redes</title>
+
+
+
+<link href="styles.css" rel="stylesheet">
+<link href="assets/isotipo-cintas.png" rel="icon"><link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="asistente.css"></head>
 <body>
 <header class="topbar">
-  <div class="brand">
-    <img src="assets/logo-vision.png" alt="VISION">
-    <div><strong>VISION</strong><span>Proceso comercial</span></div>
-  </div>
-  <div class="tag">Guía interna</div>
+<div class="brand">
+<img alt="VISION" src="assets/VISION-morado-transparente.png">
+<div><strong></strong><span>Marca · Redes · Clientes</span></div>
+</div>
+<div class="tag">Uso interno · Septiembre 2026</div>
 </header>
-
 <main class="shell">
-  <section class="hero">
-    <div>
-      <span class="eyebrow">Tu ruta rápida</span>
-      <h1>¿En qué punto está el cliente?</h1>
-      <p>Entra a la etapa y usa exactamente el material que corresponde. Sin CRM, sin llenar fichas, sin complicarse.</p>
-    </div>
-    <div class="quick-tools">
-      <a href="herramientas/presentacion.html" target="_blank" class="quick-card"><span>▣</span><div><b>Presentación</b><small>Abrir interactiva</small></div></a>
-      <a href="herramientas/cotizador/index.html" target="_blank" class="quick-card"><span>✎</span><div><b>Cotizador</b><small>Crear propuesta</small></div></a>
-      <a href="herramientas/condiciones-servicio.html" target="_blank" class="quick-card"><span>✓</span><div><b>Condiciones</b><small>Enviar al contratar</small></div></a>
-      <a href="material-grafico/brochure-vision-2026.pdf" target="_blank" class="quick-card"><span>▤</span><div><b>Brochure</b><small>Ver packs y servicios</small></div></a>
-      <a href="#material-grafico" class="quick-card"><span>▧</span><div><b>Material gráfico</b><small>4 piezas listas</small></div></a>
-    </div>
-  </section>
-
-  <section class="rule-strip">
-    <div><b>1.</b> Personaliza antes de enviar</div>
-    <div><b>2.</b> Primero entiende, luego cotiza</div>
-    <div><b>3.</b> Cada mensaje debe cerrar con un siguiente paso</div>
-  </section>
-
-  <div class="workspace">
-    <nav class="steps" aria-label="Etapas del proceso">
-      <button class="step active" data-step="1"><span>01</span><div><b>Primer contacto</b><small>Entrante o prospectado</small></div></button>
-      <button class="step" data-step="2"><span>02</span><div><b>Hay interés</b><small>Entender necesidad</small></div></button>
-      <button class="step" data-step="3"><span>03</span><div><b>Presentar VISION</b><small>Servicio + beneficios</small></div></button>
-      <button class="step" data-step="4"><span>04</span><div><b>Cotización</b><small>Propuesta personalizada</small></div></button>
-      <button class="step" data-step="5"><span>05</span><div><b>Seguimiento</b><small>Resolver y cerrar</small></div></button>
-      <button class="step" data-step="6"><span>06</span><div><b>Contratación</b><small>Condiciones + pago</small></div></button>
-      <button class="step" data-step="7"><span>07</span><div><b>Onboarding</b><small>Preparar el inicio</small></div></button>
-    </nav>
-
-    <section class="panel-wrap">
-      <article class="panel active" data-panel="1">
-        <div class="panel-head"><div><span class="stage">ETAPA 01</span><h2>Primer contacto</h2><p>El objetivo todavía no es vender todo. Es abrir conversación y detectar si tiene sentido avanzar.</p></div><span class="status">Inicio</span></div>
-        <div class="two-col">
-          <section class="box"><h3>Si el cliente te escribió</h3><p class="mini">Responde rápido, confirma qué necesita y haz una pregunta simple.</p>
-            <div class="message" id="msg-inbound">Hola, [Nombre] 👋 Gracias por escribirnos. Soy Miguel de VISION. Cuéntame un poco: ¿qué te gustaría mejorar hoy en tus redes o en tu presencia digital? Con eso te oriento y te digo qué opción podría encajar mejor.</div>
-            <button class="copy" data-copy="msg-inbound">Copiar mensaje</button>
-          </section>
-          <section class="box"><h3>Si VISION contacta una cuenta</h3><p class="mini">Menciona algo real que viste. Evita empezar con una lista de servicios.</p>
-            <div class="message" id="msg-outbound">Hola, [Nombre] 👋 Estuve revisando la cuenta de [Marca] y me llamó la atención [detalle real: producto, estilo, lanzamiento o punto de mejora]. En VISION ayudamos a marcas a ordenar y mejorar su comunicación en redes. Si te parece, puedo mostrarte en 2 minutos algunas ideas concretas que aplicaría en su caso.</div>
-            <button class="copy" data-copy="msg-outbound">Copiar mensaje</button>
-          </section>
-        </div>
-        <div class="tip"><b>Tip VISION:</b> antes de escribir a una cuenta, mira bio, últimas 6-9 publicaciones, frecuencia, llamados a la acción y si queda claro qué venden. Usa solo 1 observación concreta en el mensaje.</div>
-        <div class="actions"><a class="btn secondary" href="herramientas/presentacion.html" target="_blank">Ver presentación</a><button class="btn ghost" data-open-note="contacto">Ver mini checklist</button></div>
-      </article>
-
-      <article class="panel" data-panel="2">
-        <div class="panel-head"><div><span class="stage">ETAPA 02</span><h2>Ya mostró interés</h2><p>Antes de mandar precios, consigue el contexto mínimo para no recomendar a ciegas.</p></div><span class="status">Calificar</span></div>
-        <section class="box full"><h3>4 preguntas rápidas</h3><div class="check-grid">
-          <label><input type="checkbox"> ¿Qué quiere lograr? <small>ventas, consultas, presencia, orden, lanzamiento</small></label>
-          <label><input type="checkbox"> ¿Qué redes usa hoy? <small>Instagram, Facebook, LinkedIn, TikTok</small></label>
-          <label><input type="checkbox"> ¿Ya tiene material? <small>fotos, videos, logo, identidad, promociones</small></label>
-          <label><input type="checkbox"> ¿Qué necesita de VISION? <small>gestión, diseño, ads, web, branding</small></label>
-        </div></section>
-        <section class="box full"><h3>Texto para avanzar</h3><div class="message" id="msg-interest">Perfecto. Para recomendarte algo que realmente te sirva, cuéntame estas 3 cosas: 1) qué objetivo quieres conseguir, 2) qué redes estás usando actualmente y 3) si ya cuentas con fotos/videos o necesitarías que trabajemos principalmente con material gráfico. Con eso te indico la opción más adecuada.</div><button class="copy" data-copy="msg-interest">Copiar mensaje</button></section>
-        <div class="tip"><b>No corras al precio:</b> una cotización funciona mejor cuando responde a una necesidad concreta. Si todavía no entiendes el objetivo, quédate en esta etapa.</div>
-      </article>
-
-      <article class="panel" data-panel="3">
-        <div class="panel-head"><div><span class="stage">ETAPA 03</span><h2>Presentar VISION</h2><p>Ahora sí: muéstrale qué hacen, cómo trabajan y por qué la propuesta tiene sentido para su caso.</p></div><span class="status">Presentación</span></div>
-        <div class="resource featured"><div class="icon">▶</div><div><b>Presentación interactiva VISION</b><p>Tu presentación real ya está integrada. Úsala cuando el cliente necesita entender el servicio con más contexto.</p></div><a href="herramientas/presentacion.html" target="_blank">Abrir presentación</a></div>
-        <div class="resource"><div class="icon">▤</div><div><b>Brochure VISION 2026</b><p>PDF comercial con presentación, proceso, servicios, packs y datos de contacto. Ideal para enviarlo cuando el cliente pide información completa.</p></div><a href="material-grafico/brochure-vision-2026.pdf" target="_blank">Ver / descargar PDF</a></div>
-        <section class="box full"><h3>Mensaje para enviarla</h3><div class="message" id="msg-presentation">Te comparto nuestra presentación para que puedas ver de forma rápida cómo trabajamos en VISION, qué podemos cubrir y cómo organizamos el contenido. Revísala con calma y, en base a lo que me comentaste, luego te preparo una propuesta aterrizada a tu necesidad.</div><button class="copy" data-copy="msg-presentation">Copiar mensaje</button></section>
-        <div class="tip"><b>Recomendación:</b> no envíes la presentación “sola”. Acompáñala con una frase que conecte lo que el cliente dijo con 1 o 2 servicios concretos.</div>
-      </article>
-
-      <article class="panel" data-panel="4">
-        <div class="panel-head"><div><span class="stage">ETAPA 04</span><h2>Preparar cotización</h2><p>Personaliza alcance, inversión y condiciones. Ya tienes tu herramienta lista dentro de esta carpeta.</p></div><span class="status">Propuesta</span></div>
-        <div class="resource featured"><div class="icon">S/</div><div><b>Generador de cotizaciones</b><p>Incluye plantillas para administración de redes, Facebook Ads, TikTok, web, marca personal, branding, diseño de redes y Google Ads.</p></div><a href="herramientas/cotizador/index.html" target="_blank">Abrir cotizador</a></div>
-        <section class="box full"><h3>Antes de enviarla</h3><div class="check-grid compact">
-          <label><input type="checkbox"> Nombre y servicio correctos</label><label><input type="checkbox"> Alcance específico</label><label><input type="checkbox"> Precio y moneda revisados</label><label><input type="checkbox"> Vigencia definida</label><label><input type="checkbox"> Qué NO está incluido</label><label><input type="checkbox"> Siguiente paso claro</label>
-        </div></section>
-        <section class="box full"><h3>Mensaje de envío</h3><div class="message" id="msg-quote">Hola, [Nombre]. Te envío la propuesta basada en lo que conversamos. Ahí encontrarás el alcance, lo que incluye el servicio, la inversión y las condiciones principales. Revísala y, si quieres ajustar algún punto del alcance, lo vemos antes de iniciar.</div><button class="copy" data-copy="msg-quote">Copiar mensaje</button></section>
-      </article>
-
-      <article class="panel" data-panel="5">
-        <div class="panel-head"><div><span class="stage">ETAPA 05</span><h2>Seguimiento sin perseguir</h2><p>Haz seguimiento con contexto. No envíes solo “¿viste la propuesta?”.</p></div><span class="status">Seguimiento</span></div>
-        <div class="two-col">
-          <section class="box"><h3>Seguimiento 1</h3><div class="message" id="msg-follow1">Hola, [Nombre] 👋 Quería saber si pudiste revisar la propuesta. Si hay algún punto que quieras ajustar —alcance, frecuencia o enfoque— dime y lo revisamos para que la propuesta quede alineada a lo que necesitan.</div><button class="copy" data-copy="msg-follow1">Copiar</button></section>
-          <section class="box"><h3>Seguimiento final</h3><div class="message" id="msg-follow2">Hola, [Nombre]. Cierro por aquí el seguimiento para no llenarte de mensajes. Si más adelante quieren retomar el tema de [servicio/objetivo], con gusto retomamos desde la propuesta que vimos. Quedo atento.</div><button class="copy" data-copy="msg-follow2">Copiar</button></section>
-        </div>
-        <div class="tip"><b>Cadencia sugerida:</b> si no acordaron una fecha, haz un primer seguimiento a los 2-3 días hábiles y uno final unos 5-7 días después. Si el cliente te dio una fecha, respétala.</div>
-      </article>
-
-      <article class="panel" data-panel="6">
-        <div class="panel-head"><div><span class="stage">ETAPA 06</span><h2>Cliente decidió contratar</h2><p>Aquí cambia el tono: ya no estás vendiendo. Toca dejar condiciones claras, confirmar pago y preparar el inicio.</p></div><span class="status success">Contratado</span></div>
-        <div class="resource featured"><div class="icon">✓</div><div><b>Condiciones del servicio 2026</b><p>Tu documento real incluye horarios, entregas, aprobaciones, pagos, accesos, pausas y aceptación por WhatsApp.</p></div><a href="herramientas/condiciones-servicio.html" target="_blank">Abrir condiciones</a></div>
-        <section class="box full"><h3>Mensaje para el cliente</h3><div class="message" id="msg-conditions">¡Excelente, [Nombre]! 🙌 Antes de iniciar te comparto nuestras condiciones de servicio para que tengamos claros horarios, aprobaciones, pagos, accesos y forma de trabajo. Al final encontrarás el botón para confirmar la aceptación. Apenas tengamos la conformidad y el pago coordinado, pasamos al onboarding.</div><button class="copy" data-copy="msg-conditions">Copiar mensaje</button></section>
-        <div class="tip"><b>Importante:</b> tus condiciones indican pago mensual por adelantado y que el inicio/continuidad depende de la confirmación del pago. También contemplan plazos de aprobación, pausas y políticas de acceso; conviene enviarlas antes de pedir credenciales.</div>
-      </article>
-
-      <article class="panel" data-panel="7">
-        <div class="panel-head"><div><span class="stage">ETAPA 07</span><h2>Onboarding del cliente</h2><p>Recoge lo mínimo necesario para poder trabajar bien desde la primera semana.</p></div><span class="status success">Inicio</span></div>
-        <section class="box full"><h3>Checklist de inicio</h3><div class="check-grid onboarding">
-          <label><input type="checkbox"> Logo + manual de marca</label><label><input type="checkbox"> Fotos y videos disponibles</label><label><input type="checkbox"> Servicios / productos prioritarios</label><label><input type="checkbox"> Promociones y precios vigentes</label><label><input type="checkbox"> Público objetivo</label><label><input type="checkbox"> Competidores / referencias</label><label><input type="checkbox"> Tono de comunicación</label><label><input type="checkbox"> Objetivo principal del mes</label><label><input type="checkbox"> Responsable de aprobar contenido</label><label><input type="checkbox"> Fechas comerciales importantes</label><label><input type="checkbox"> Acceso a Meta / Instagram</label><label><input type="checkbox"> Datos para facturación o recibo</label>
-        </div></section>
-        <section class="box full"><h3>Mensaje para pedir material</h3><div class="message" id="msg-onboarding">Para comenzar bien, necesito reunir la información base de la marca. Por favor envíame: logo/identidad, servicios o productos prioritarios, promociones vigentes, fotos/videos disponibles, referencias de estilo, público objetivo y fechas importantes del mes. También coordinamos el acceso a las redes y quién será la persona encargada de aprobar el contenido.</div><button class="copy" data-copy="msg-onboarding">Copiar mensaje</button></section>
-        <div class="security"><b>Accesos a redes:</b> siempre que sea posible, usa permisos de Página / Meta Business Suite en lugar de pedir la contraseña personal del cliente. Da solo el nivel de acceso necesario y deja definido quién puede publicar, aprobar o administrar.</div>
-      </article>
-    </section>
+<section class="hero">
+<div>
+<span class="eyebrow">Centro de trabajo</span>
+<h1>¿Qué hacemos hoy, Miguel?</h1>
+<p>Prepara mensajes, encuentra el siguiente paso y abre tus herramientas de VISION desde un solo lugar.</p>
+</div>
+<div class="quick-tools"><a class="quick-card" href="#asistente"><div><b>Asistente guiado</b><small>Tips y mensajes para cada etapa</small></div></a><a class="quick-card" href="herramientas/cotizador/index.html" target="_blank" rel="noopener"><div><b>Cotizador</b><small>8 servicios, incluido TikTok</small></div></a><a class="quick-card" href="herramientas/presentacion.html" target="_blank" rel="noopener"><div><b>Presentación</b><small>12 diapositivas + PDF</small></div></a><a class="quick-card" href="#material-grafico"><div><b>Publicaciones</b><small>7 bases + Canva</small></div></a><a class="quick-card" href="#identidad"><div><b>Identidad</b><small>Colores, logos y tipografía</small></div></a><a class="quick-card" href="#embajadora"><div><b>Embajadora</b><small>4 poses individuales</small></div></a><a class="quick-card" href="herramientas/brochure.html"><div><b>Brochure</b><small>5 páginas + Canva</small></div></a><a class="quick-card" href="#proceso"><div><b>Clientes</b><small>7 etapas y mensajes</small></div></a><a class="quick-card" href="herramientas/condiciones-servicio.html"><div><b>Condiciones</b><small>Documento de servicio</small></div></a></div>
+</section>
+<section class="rule-strip">
+<div><b>1.</b> Personaliza antes de enviar</div>
+<div><b>2.</b> Primero entiende, luego cotiza</div>
+<div><b>3.</b> Cada mensaje debe cerrar con un siguiente paso</div>
+</section><section id="asistente" class="assistant">
+ <div class="assistant-head"><div><span class="eyebrow">TU GUÍA DE TRABAJO</span><h2>Vamos paso a paso.</h2><p>Elige una situación y te muestro qué hacer, qué enviar y qué herramienta abrir.</p></div><span class="assistant-badge">Guía sin IA · Sin conexión</span></div>
+ <div class="assistant-layout">
+  <form id="guide-form" class="assistant-form">
+   <label for="guide-client">Nombre del cliente<input id="guide-client" placeholder="Ej. Andrea" maxlength="100" autocomplete="off"></label>
+   <label for="guide-brand">Empresa o marca<input id="guide-brand" placeholder="Ej. Café del Parque" maxlength="140" autocomplete="off"></label>
+   <label for="guide-service">Servicio<select id="guide-service"><option>Administración de redes sociales</option><option>TikTok</option><option>Publicidad digital</option><option>Branding</option><option>Página web</option><option>Marca personal</option><option>Diseño de contenido</option></select></label>
+   <label for="guide-goal">Objetivo del cliente<input id="guide-goal" placeholder="Ej. recibir más consultas" maxlength="200"></label>
+   <label for="guide-situation">¿En qué situación estás?<select id="guide-situation"><option value="contact">Quiero contactar un negocio</option><option value="interest">Me pidió más información</option><option value="present">Quiero presentar VISION</option><option value="quote">Necesito preparar una cotización</option><option value="follow">Vio mi mensaje y no respondió</option><option value="price">Le parece caro</option><option value="close">Ya quiere contratar</option><option value="start">Vamos a comenzar el trabajo</option><option value="content">Necesito una idea para publicar</option></select></label>
+   <button class="btn" type="submit">Mostrar mi siguiente paso →</button>
+   <button id="guide-new" class="guide-link" type="button">Limpiar datos para otro cliente</button>
+   <p class="guide-small">Los datos se guardan en este navegador. Los enlaces a Canva y WhatsApp requieren internet.</p>
+  </form>
+  <div class="assistant-answer" id="guide-answer">
+   <div class="answer-label">RECOMENDACIÓN PARA TI</div><h3 id="guide-title"></h3><p id="guide-advice"></p>
+   <ol id="guide-steps"></ol>
+   <div class="guide-tip"><b>Ten en cuenta</b><p id="guide-tip"></p></div>
+   <label for="guide-message" class="message-label">Texto sugerido · puedes editarlo antes de copiar</label>
+   <textarea id="guide-message" rows="5"></textarea>
+   <div class="guide-actions"><button class="btn" id="guide-copy" type="button">Copiar texto</button><button class="btn ghost" id="guide-download" type="button">Descargar nota</button><button class="btn ghost" id="guide-next" type="button">Continuar →</button></div>
+   <div id="guide-tools" class="guide-tools"></div><p id="guide-status" role="status" aria-live="polite"></p>
   </div>
+ </div>
+</section>
 
-  <section class="graphic-library" id="material-grafico">
-    <div class="library-head"><div><span class="eyebrow">Biblioteca comercial</span><h2>Material gráfico VISION</h2><p>Piezas listas para apoyar una conversación, presentar el Pack Básico o mostrar el alcance de los servicios.</p></div><span class="status">4 piezas + brochure</span></div>
-    <div class="graphic-grid">
-      <a class="graphic-card brochure-card" href="material-grafico/brochure-vision-2026.pdf" target="_blank"><div class="pdf-preview"><span>PDF</span><strong>VISION</strong><small>Brochure 2026</small></div><div><b>Brochure VISION 2026</b><small>5 páginas · packs, servicios, proceso y contacto</small></div></a>
-      <a class="graphic-card" href="material-grafico/pack-basico-publicidad.png" target="_blank"><img src="material-grafico/pack-basico-publicidad.png" alt="Pack Básico Social"><div><b>Pack Básico Social</b><small>Pieza comercial principal · gestión de redes</small></div></a>
-      <a class="graphic-card" href="material-grafico/pack-basico-info.png" target="_blank"><img src="material-grafico/pack-basico-info.png" alt="Información Pack Básico Social"><div><b>Más info · Pack Básico</b><small>Detalle de alcance e inversión mensual</small></div></a>
-      <a class="graphic-card" href="material-grafico/servicios-marketing.png" target="_blank"><img src="material-grafico/servicios-marketing.png" alt="Servicios de marketing"><div><b>Servicios de marketing</b><small>Resumen visual de servicios VISION</small></div></a>
-      <a class="graphic-card" href="material-grafico/tu-marca-en-buenas-manos.png" target="_blank"><img src="material-grafico/tu-marca-en-buenas-manos.png" alt="Tu marca en buenas manos"><div><b>Tu marca en buenas manos</b><small>Nueva pieza general · estrategia, diseño, gestión y resultados</small></div></a>
-    </div>
-    <div class="tip"><b>Cómo usarlo:</b> no envíes las cuatro piezas juntas. Pack Básico funciona cuando el prospecto ya pregunta por gestión de redes; Servicios de marketing sirve para mostrar amplitud; “Tu marca en buenas manos” funciona mejor como pieza de apertura o recordatorio visual.</div>
-  </section>
+<div class="workspace" id="proceso">
+<nav aria-label="Etapas del proceso" class="steps">
+<button class="step active" data-step="1"><span>01</span><div><b>Primer contacto</b><small>Entrante o prospectado</small></div></button>
+<button class="step" data-step="2"><span>02</span><div><b>Hay interés</b><small>Entender necesidad</small></div></button>
+<button class="step" data-step="3"><span>03</span><div><b>Presentar VISION</b><small>Servicio + beneficios</small></div></button>
+<button class="step" data-step="4"><span>04</span><div><b>Cotización</b><small>Propuesta personalizada</small></div></button>
+<button class="step" data-step="5"><span>05</span><div><b>Seguimiento</b><small>Resolver y cerrar</small></div></button>
+<button class="step" data-step="6"><span>06</span><div><b>Contratación</b><small>Condiciones + pago</small></div></button>
+<button class="step" data-step="7"><span>07</span><div><b>Onboarding</b><small>Preparar el inicio</small></div></button>
+</nav>
+<section class="panel-wrap">
+<article class="panel active" data-panel="1">
+<div class="panel-head"><div><span class="stage">ETAPA 01</span><h2>Primer contacto</h2><p>El objetivo todavía no es vender todo. Es abrir conversación y detectar si tiene sentido avanzar.</p></div><span class="status">Inicio</span></div>
+<div class="two-col">
+<section class="box"><h3>Si el cliente te escribió</h3><p class="mini">Responde rápido, confirma qué necesita y haz una pregunta simple.</p>
+<div class="message" id="msg-inbound">Hola, [Nombre] 👋 Gracias por escribirnos. Soy Miguel de VISION. Cuéntame un poco: ¿qué te gustaría mejorar hoy en tus redes o en tu presencia digital? Con eso te oriento y te digo qué opción podría encajar mejor.</div>
+<button class="copy" data-copy="msg-inbound">Copiar mensaje</button>
+</section>
+<section class="box"><h3>Si VISION contacta una cuenta</h3><p class="mini">Menciona algo real que viste. Evita empezar con una lista de servicios.</p>
+<div class="message" id="msg-outbound">Hola, [Nombre] 👋 Estuve revisando la cuenta de [Marca] y me llamó la atención [detalle real: producto, estilo, lanzamiento o punto de mejora]. En VISION ayudamos a marcas a ordenar y mejorar su comunicación en redes. Si te parece, puedo mostrarte en 2 minutos algunas ideas concretas que aplicaría en su caso.</div>
+<button class="copy" data-copy="msg-outbound">Copiar mensaje</button>
+</section>
+</div>
+<div class="tip"><b>Tip VISION:</b> antes de escribir a una cuenta, mira bio, últimas 6-9 publicaciones, frecuencia, llamados a la acción y si queda claro qué venden. Usa solo 1 observación concreta en el mensaje.</div>
+<div class="actions"><a class="btn secondary" href="herramientas/presentacion.html" rel="noopener" target="_blank">Ver presentación</a><button class="btn ghost" data-open-note="contacto">Ver mini checklist</button></div>
+</article>
+<article class="panel" data-panel="2">
+<div class="panel-head"><div><span class="stage">ETAPA 02</span><h2>Ya mostró interés</h2><p>Antes de mandar precios, consigue el contexto mínimo para no recomendar a ciegas.</p></div><span class="status">Calificar</span></div>
+<section class="box full"><h3>4 preguntas rápidas</h3><div class="check-grid">
+<label><input type="checkbox"> ¿Qué quiere lograr? <small>ventas, consultas, presencia, orden, lanzamiento</small></label>
+<label><input type="checkbox"> ¿Qué redes usa hoy? <small>Instagram, Facebook, LinkedIn, TikTok</small></label>
+<label><input type="checkbox"> ¿Ya tiene material? <small>fotos, videos, logo, identidad, promociones</small></label>
+<label><input type="checkbox"> ¿Qué necesita de VISION? <small>gestión, diseño, ads, web, branding</small></label>
+</div></section>
+<section class="box full"><h3>Texto para avanzar</h3><div class="message" id="msg-interest">Perfecto. Para recomendarte algo que realmente te sirva, cuéntame estas 3 cosas: 1) qué objetivo quieres conseguir, 2) qué redes estás usando actualmente y 3) si ya cuentas con fotos/videos o necesitarías que trabajemos principalmente con material gráfico. Con eso te indico la opción más adecuada.</div><button class="copy" data-copy="msg-interest">Copiar mensaje</button></section>
+<div class="tip"><b>No corras al precio:</b> una cotización funciona mejor cuando responde a una necesidad concreta. Si todavía no entiendes el objetivo, quédate en esta etapa.</div>
+</article>
+<article class="panel" data-panel="3">
+<div class="panel-head"><div><span class="stage">ETAPA 03</span><h2>Presentar VISION</h2><p>Ahora sí: muéstrale qué hacen, cómo trabajan y por qué la propuesta tiene sentido para su caso.</p></div><span class="status">Presentación</span></div>
+<div class="resource featured"><div class="icon">▶</div><div><b>Presentación de VISION</b><p>12 diapositivas con descarga directa en PDF.</p></div><a href="herramientas/presentacion.html" target="_blank" rel="noopener">Abrir presentación</a></div><div class="actions"><a class="btn secondary" href="herramientas/VISION-PRESENTACION-2026.pdf" download="">Descargar PDF</a><a class="btn ghost" href="herramientas/brochure.html" target="_blank" rel="noopener">Brochure y Canva</a></div>
 
-  <section class="bottom-note">
-    <div><b>Idea central</b><p>El proceso no es una lista rígida. Si el cliente ya sabe lo que quiere, puedes saltar etapas. La regla es simple: nunca enviar material sin saber qué objetivo cumple.</p></div>
-    <div class="mini-flow"><span>Contacto</span><i>→</i><span>Interés</span><i>→</i><span>Presentación</span><i>→</i><span>Cotización</span><i>→</i><span>Condiciones</span><i>→</i><span>Onboarding</span></div>
-  </section>
+<section class="box full"><h3>Mensaje para enviarla</h3><div class="message" id="msg-presentation">Te comparto la presentación de VISION para que conozcas nuestros servicios y cómo trabajamos. Por lo que me comentaste sobre [objetivo], revisaría especialmente [servicio]. ¿Quieres que te detalle cómo lo aplicaríamos a tu marca?</div><button class="copy" data-copy="msg-presentation">Copiar mensaje</button></section>
+<div class="tip"><b>Recomendación:</b> no envíes la presentación “sola”. Acompáñala con una frase que conecte lo que el cliente dijo con 1 o 2 servicios concretos.</div>
+</article>
+<article class="panel" data-panel="4" id="cotizador">
+<div class="panel-head"><div><span class="stage">ETAPA 04</span><h2>Preparar cotización</h2><p>Revisa el alcance, la inversión y las condiciones antes de enviar tu propuesta.</p></div><span class="status">Propuesta</span></div>
+<div class="resource featured"><div class="icon">S/</div><div><b>Cotizador VISION</b><p>Propuestas editables para redes, TikTok, publicidad, branding, marca personal y web. Exportación PDF.</p></div><a href="herramientas/cotizador/index.html" target="_blank" rel="noopener">Abrir cotizador</a></div>
+<section class="box full"><h3>Antes de enviarla</h3><div class="check-grid compact">
+<label><input type="checkbox"> Nombre y servicio correctos</label><label><input type="checkbox"> Alcance específico</label><label><input type="checkbox"> Precio y moneda revisados</label><label><input type="checkbox"> Vigencia definida</label><label><input type="checkbox"> Qué NO está incluido</label><label><input type="checkbox"> Siguiente paso claro</label>
+</div></section>
+<section class="box full"><h3>Mensaje de envío</h3><div class="message" id="msg-quote">Hola, [Nombre]. Te envío la propuesta basada en lo que conversamos. Ahí encontrarás el alcance, lo que incluye el servicio, la inversión y las condiciones principales. Revísala y, si quieres ajustar algún punto del alcance, lo vemos antes de iniciar.</div><button class="copy" data-copy="msg-quote">Copiar mensaje</button></section>
+</article>
+<article class="panel" data-panel="5">
+<div class="panel-head"><div><span class="stage">ETAPA 05</span><h2>Seguimiento sin perseguir</h2><p>Haz seguimiento con contexto. No envíes solo “¿viste la propuesta?”.</p></div><span class="status">Seguimiento</span></div>
+<div class="two-col">
+<section class="box"><h3>Seguimiento 1</h3><div class="message" id="msg-follow1">Hola, [Nombre] 👋 Quería saber si pudiste revisar la propuesta. Si hay algún punto que quieras ajustar —alcance, frecuencia o enfoque— dime y lo revisamos para que la propuesta quede alineada a lo que necesitan.</div><button class="copy" data-copy="msg-follow1">Copiar</button></section>
+<section class="box"><h3>Seguimiento final</h3><div class="message" id="msg-follow2">Hola, [Nombre]. Cierro por aquí el seguimiento para no llenarte de mensajes. Si más adelante quieren retomar el tema de [servicio/objetivo], con gusto retomamos desde la propuesta que vimos. Quedo atento.</div><button class="copy" data-copy="msg-follow2">Copiar</button></section>
+</div>
+<div class="tip"><b>Cadencia sugerida:</b> si no acordaron una fecha, haz un primer seguimiento a los 2-3 días hábiles y uno final unos 5-7 días después. Si el cliente te dio una fecha, respétala.</div>
+</article>
+<article class="panel" data-panel="6">
+<div class="panel-head"><div><span class="stage">ETAPA 06</span><h2>Cliente decidió contratar</h2><p>Aquí cambia el tono: ya no estás vendiendo. Toca dejar condiciones claras, confirmar pago y preparar el inicio.</p></div><span class="status success">Contratado</span></div>
+<div class="resource featured"><div class="icon">✓</div><div><b>Condiciones del servicio 2026</b><p>Edita las condiciones y los datos del cliente. Guarda tu copia HTML o expórtala como PDF para enviar.</p></div><a href="herramientas/condiciones-servicio.html" rel="noopener" target="_blank">Abrir condiciones</a></div>
+<section class="box full"><h3>Mensaje para el cliente</h3><div class="message" id="msg-conditions">¡Excelente, [Nombre]! 🙌 Antes de iniciar te comparto nuestras condiciones de servicio para que tengamos claros horarios, aprobaciones, pagos, accesos y forma de trabajo. Al final encontrarás el botón para confirmar la aceptación. Apenas tengamos la conformidad y el pago coordinado, pasamos al onboarding.</div><button class="copy" data-copy="msg-conditions">Copiar mensaje</button></section>
+<div class="tip"><b>Importante:</b> tus condiciones indican pago mensual por adelantado y que el inicio/continuidad depende de la confirmación del pago. También contemplan plazos de aprobación, pausas y políticas de acceso; conviene enviarlas antes de pedir credenciales.</div>
+</article>
+<article class="panel" data-panel="7">
+<div class="panel-head"><div><span class="stage">ETAPA 07</span><h2>Onboarding del cliente</h2><p>Recoge lo mínimo necesario para poder trabajar bien desde la primera semana.</p></div><span class="status success">Inicio</span></div>
+<section class="box full"><h3>Checklist de inicio</h3><div class="check-grid onboarding">
+<label><input type="checkbox"> Logo + manual de marca</label><label><input type="checkbox"> Fotos y videos disponibles</label><label><input type="checkbox"> Servicios / productos prioritarios</label><label><input type="checkbox"> Promociones y precios vigentes</label><label><input type="checkbox"> Público objetivo</label><label><input type="checkbox"> Competidores / referencias</label><label><input type="checkbox"> Tono de comunicación</label><label><input type="checkbox"> Objetivo principal del mes</label><label><input type="checkbox"> Responsable de aprobar contenido</label><label><input type="checkbox"> Fechas comerciales importantes</label><label><input type="checkbox"> Acceso a Meta / Instagram</label><label><input type="checkbox"> Datos para facturación o recibo</label>
+</div></section>
+<section class="box full"><h3>Mensaje para pedir material</h3><div class="message" id="msg-onboarding">Para comenzar bien, necesito reunir la información base de la marca. Por favor envíame: logo/identidad, servicios o productos prioritarios, promociones vigentes, fotos/videos disponibles, referencias de estilo, público objetivo y fechas importantes del mes. También coordinamos el acceso a las redes y quién será la persona encargada de aprobar el contenido.</div><button class="copy" data-copy="msg-onboarding">Copiar mensaje</button></section>
+<div class="security"><b>Accesos a redes:</b> siempre que sea posible, usa permisos de Página / Meta Business Suite en lugar de pedir la contraseña personal del cliente. Da solo el nivel de acceso necesario y deja definido quién puede publicar, aprobar o administrar.</div>
+</article>
+</section>
+</div>
+<section class="graphic-library" id="material-grafico"><div class="library-head"><div><span class="eyebrow">Redes sociales</span><h2>7 bases para publicar</h2><p>Duplica la plantilla en Canva, adapta el mensaje y exporta. Los textos principales son editables; las fotos y algunos gráficos siguen siendo imágenes.</p></div><a class="btn secondary" href="https://www.canva.com/folder/FAHV8SAfoy4" rel="noopener" target="_blank">Carpeta en Canva ↗</a></div><div aria-label="Filtrar publicaciones" class="filters" role="group"><button aria-pressed="true" class="filter active" data-filter="Todas">Todas</button><button aria-pressed="false" class="filter" data-filter="Marca">Marca</button><button aria-pressed="false" class="filter" data-filter="Consejos">Consejos</button><button aria-pressed="false" class="filter" data-filter="Servicios">Servicios</button><button aria-pressed="false" class="filter" data-filter="Portafolio">Portafolio</button></div><div class="resource-grid" id="posts-grid"><article class="asset-card" data-category="Marca"><a href="recursos/posts/01.png" rel="noopener" target="_blank"><img alt="Marca con embajadora" loading="lazy" src="recursos/posts/01.png"></a><div class="asset-body"><small>01 · Marca</small><h3>Marca con embajadora</h3><div class="asset-actions"><a href="https://www.canva.com/d/TrWEeZ2BqzyexvQ" rel="noopener" target="_blank">Editar en Canva ↗</a><a download="" href="recursos/posts/01.png">PNG ↓</a></div></div></article><article class="asset-card" data-category="Marca"><a href="recursos/posts/02.png" rel="noopener" target="_blank"><img alt="Marca y papelería" loading="lazy" src="recursos/posts/02.png"></a><div class="asset-body"><small>02 · Marca</small><h3>Marca y papelería</h3><div class="asset-actions"><a href="https://www.canva.com/d/snpu4NnTbiX8-iU" rel="noopener" target="_blank">Editar en Canva ↗</a><a download="" href="recursos/posts/02.png">PNG ↓</a></div></div></article><article class="asset-card" data-category="Consejos"><a href="recursos/posts/03.png" rel="noopener" target="_blank"><img alt="Consejos de identidad" loading="lazy" src="recursos/posts/03.png"></a><div class="asset-body"><small>03 · Consejos</small><h3>Consejos de identidad</h3><div class="asset-actions"><a href="https://www.canva.com/d/UW80l8-jxjgVL9C" rel="noopener" target="_blank">Editar en Canva ↗</a><a download="" href="recursos/posts/03.png">PNG ↓</a></div></div></article><article class="asset-card" data-category="Servicios"><a href="recursos/posts/04.png" rel="noopener" target="_blank"><img alt="Pack Básico sin embajadora" loading="lazy" src="recursos/posts/04.png"></a><div class="asset-body"><small>04 · Servicios</small><h3>Pack Básico sin embajadora</h3><div class="asset-actions"><a href="https://www.canva.com/d/LjvdmD1p0qznKA0" rel="noopener" target="_blank">Editar en Canva ↗</a><a download="" href="recursos/posts/04.png">PNG ↓</a></div></div></article><article class="asset-card" data-category="Portafolio"><a href="recursos/posts/05.png" rel="noopener" target="_blank"><img alt="Portafolio" loading="lazy" src="recursos/posts/05.png"></a><div class="asset-body"><small>05 · Portafolio</small><h3>Portafolio</h3><div class="asset-actions"><a href="https://www.canva.com/d/ERWFW_-z6-DdEdM" rel="noopener" target="_blank">Editar en Canva ↗</a><a download="" href="recursos/posts/05.png">PNG ↓</a></div></div></article><article class="asset-card" data-category="Consejos"><a href="recursos/posts/06.png" rel="noopener" target="_blank"><img alt="Consejos con embajadora" loading="lazy" src="recursos/posts/06.png"></a><div class="asset-body"><small>06 · Consejos</small><h3>Consejos con embajadora</h3><div class="asset-actions"><a href="https://www.canva.com/d/Bt3GVhADwWu6pIG" rel="noopener" target="_blank">Editar en Canva ↗</a><a download="" href="recursos/posts/06.png">PNG ↓</a></div></div></article><article class="asset-card" data-category="Servicios"><a href="recursos/posts/07.png" rel="noopener" target="_blank"><img alt="Pack Básico con embajadora" loading="lazy" src="recursos/posts/07.png"></a><div class="asset-body"><small>07 · Servicios</small><h3>Pack Básico con embajadora</h3><div class="asset-actions"><a href="https://www.canva.com/d/0KFJUjkP5ud-h6x" rel="noopener" target="_blank">Editar en Canva ↗</a><a download="" href="recursos/posts/07.png">PNG ↓</a></div></div></article></div><p class="mini">La pieza de portafolio muestra una composición de ejemplo: reemplázala por trabajos reales. Estos siete diseños conservan el logo con el que fueron aprobados; el isotipo con cintas está disponible aparte para aplicarlo en próximas versiones.</p></section><section class="graphic-library" id="identidad"><div class="library-head"><div><span class="eyebrow">Identidad visual</span><h2>La base de la marca</h2><p>Morado, curvas y mensajes claros. Una misma familia visual en cada pieza.</p></div><a class="btn secondary" href="https://www.canva.com/d/tPDxTZQPBy-CaVx" rel="noopener" target="_blank">Guía en Canva ↗</a></div><div class="identity-layout"><div class="isotipo"><img alt="Isotipo VISION con cintas" src="assets/isotipo-cintas.png"><a download="" href="assets/isotipo-cintas.png">Descargar isotipo con cintas ↓</a><small>PNG con fondo blanco · propuesta nueva</small></div><div><h3>Manrope</h3><p>ExtraBold 800 · títulos<br>SemiBold 600 · subtítulos y botones<br>Regular 400 · textos</p><div class="swatches"><div><span style="background:#6220B5"></span><b>Morado VISION</b><small>#6220B5</small></div><div><span style="background:#F3EDF9"></span><b>Lavanda</b><small>#F3EDF9</small></div><div><span style="background:#211A2B"></span><b>Negro suave</b><small>#211A2B</small></div><div><span style="background:#625B6B"></span><b>Gris</b><small>#625B6B</small></div><div><span style="background:#FFFFFF"></span><b>Blanco</b><small>#FFFFFF</small></div></div><p class="mini">Mantén el dibujo original de las letras del logo. La guía de Canva corresponde a la base aprobada; el isotipo con cintas se presenta aquí como recurso adicional.</p></div></div><div class="asset-actions"><a download="" href="assets/VISION-morado-transparente.png">Logo original morado · PNG ↓</a><a download="" href="assets/VISION-negro-transparente.png">Logo original negro · PNG ↓</a><a download="" href="assets/VISION-blanco-transparente.png">Logo original blanco · PNG ↓</a><a href="https://www.canva.com/folder/FAHV8WRp9B8" rel="noopener" target="_blank">Recursos en Canva ↗</a><a href="https://www.canva.com/d/PTE7fiO_sUN9CqL" rel="noopener" target="_blank">Tarjeta personal editable ↗</a></div></section><section class="graphic-library" id="embajadora"><div class="library-head"><div><span class="eyebrow">Embajadora</span><h2>Una pose para cada mensaje</h2><p>Conserva el rostro, el polo morado y el estilo. Alterna estas imágenes con publicaciones sin personaje.</p></div></div><div class="resource-grid poses"><article class="asset-card"><img alt="Pose Bienvenida" loading="lazy" src="recursos/embajadora/01.png"><div class="asset-body"><h3>Bienvenida</h3><a download="" href="recursos/embajadora/01.png">Descargar PNG ↓</a></div></article><article class="asset-card"><img alt="Pose Confianza" loading="lazy" src="recursos/embajadora/02.png"><div class="asset-body"><h3>Confianza</h3><a download="" href="recursos/embajadora/02.png">Descargar PNG ↓</a></div></article><article class="asset-card"><img alt="Pose Asesoría" loading="lazy" src="recursos/embajadora/03.png"><div class="asset-body"><h3>Asesoría</h3><a download="" href="recursos/embajadora/03.png">Descargar PNG ↓</a></div></article><article class="asset-card"><img alt="Pose Presentación" loading="lazy" src="recursos/embajadora/04.png"><div class="asset-body"><h3>Presentación</h3><a download="" href="recursos/embajadora/04.png">Descargar PNG ↓</a></div></article></div><p class="mini">Archivos originales de 1086 × 1448 px, con fondo claro. No son archivos 8K ni recortes transparentes.</p></section>
+<section class="bottom-note">
+<div><b>Idea central</b><p>El proceso no es una lista rígida. Si el cliente ya sabe lo que quiere, puedes saltar etapas. La regla es simple: nunca enviar material sin saber qué objetivo cumple.</p></div>
+<div class="mini-flow"><span>Contacto</span><i>→</i><span>Interés</span><i>→</i><span>Presentación</span><i>→</i><span>Cotización</span><i>→</i><span>Condiciones</span><i>→</i><span>Onboarding</span></div>
+</section>
 </main>
-
 <div class="toast" id="toast">Copiado ✓</div>
-<div class="modal" id="modal" aria-hidden="true"><div class="modal-card"><button class="modal-close" id="modalClose">×</button><span class="stage">MINI CHECKLIST</span><h3>Antes de contactar una cuenta</h3><ul><li>¿Se entiende en 5 segundos qué vende?</li><li>¿Publica con frecuencia o está abandonada?</li><li>¿La imagen se ve consistente?</li><li>¿Tiene llamadas a la acción claras?</li><li>¿Hay una oportunidad concreta que puedas mencionar?</li></ul><p>Usa una sola observación en tu mensaje. El objetivo es iniciar conversación, no hacer una auditoría gratis.</p></div></div>
+<div aria-hidden="true" class="modal" id="modal"><div class="modal-card"><button class="modal-close" id="modalClose">×</button><span class="stage">MINI CHECKLIST</span><h3>Antes de contactar una cuenta</h3><ul><li>¿Se entiende en 5 segundos qué vende?</li><li>¿Publica con frecuencia o está abandonada?</li><li>¿La imagen se ve consistente?</li><li>¿Tiene llamadas a la acción claras?</li><li>¿Hay una oportunidad concreta que puedas mencionar?</li></ul><p>Usa una sola observación en tu mensaje. El objetivo es iniciar conversación, no hacer una auditoría gratis.</p></div></div>
 <script src="app.js"></script>
-</body>
-</html>
+
+
+<script src="asistente.js"></script></body></html>

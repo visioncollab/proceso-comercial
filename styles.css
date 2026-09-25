@@ -380,3 +380,11 @@ button{cursor:pointer}
   .steps{grid-template-columns:1fr}
   .graphic-grid{grid-template-columns:1fr 1fr}
 }
+
+/* Renovación VISION · septiembre 2026 */
+:root{--purple:#6220B5;--purple-2:#8448D1;--purple-3:#B89AEC;--ink:#211A2B;--muted:#625B6B;--lavender:#F3EDF9;--lavender-2:#F8F5FC}
+.brand img{width:46px;height:46px;object-fit:contain;border-radius:50%;box-shadow:none}.hero h1{font-size:clamp(32px,4.3vw,52px)}
+section[id],.workspace{scroll-margin-top:90px}.filters,.asset-actions{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}.filter{border:1px solid var(--line);background:white;color:var(--ink);padding:9px 15px;border-radius:999px}.filter.active{background:var(--purple);color:white}
+.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.asset-card{overflow:hidden;border:1px solid var(--line);border-radius:18px;background:white;min-width:0}.asset-card[hidden]{display:none}.asset-card img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover}.asset-body{padding:16px}.asset-body h3{font-size:15px;margin:6px 0}.asset-body small{color:var(--muted)}.asset-actions a,.asset-body>a{font-size:12px;font-weight:800;color:var(--purple);text-decoration:underline;text-underline-offset:4px}.asset-actions{margin-bottom:4px}.poses{grid-template-columns:repeat(4,minmax(0,1fr))}.identity-layout{display:grid;grid-template-columns:230px 1fr;gap:30px}.isotipo img{width:100%;border-radius:20px}.isotipo a,.isotipo small{display:block;font-size:12px;margin:8px 0}.swatches{display:flex;gap:12px;flex-wrap:wrap}.swatches>div{width:100px}.swatches span{display:block;height:55px;border-radius:10px;border:1px solid #ddd}.swatches b,.swatches small{display:block;font-size:11px;margin-top:5px}a:focus-visible,button:focus-visible{outline:3px solid #B89AEC;outline-offset:4px}
+@media(max-width:700px){.resource-grid,.poses{grid-template-columns:repeat(2,minmax(0,1fr))}.identity-layout{grid-template-columns:1fr}.isotipo{max-width:220px}.library-head{flex-wrap:wrap;gap:16px}.topbar .tag{display:none}.asset-actions{gap:10px}.asset-body{padding:11px}.asset-body h3{font-size:13px}}
+@media(max-width:380px){.resource-grid,.poses{grid-template-columns:1fr}}
