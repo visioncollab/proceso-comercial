@@ -1,0 +1,11 @@
+VISION · Cotizador
+
+1. Descomprime la carpeta COTIZADOR completa.
+2. Abre index.html en Chrome, Edge o Firefox.
+3. Selecciona un servicio, carga su contenido y completa los datos del cliente.
+4. Pulsa Exportar PDF y elige Guardar como PDF: tamaño A4, escala 100 %, sin encabezados ni pies del navegador y con gráficos de fondo.
+
+La tipografía Manrope y los logos están incluidos: no necesitas conexión.
+Los cambios se guardan en este navegador. El botón Guardar no descarga un archivo de respaldo.
+Los precios, servicios, condiciones y datos bancarios conservan el contenido del cotizador recibido y son editables.
+La plantilla está diseñada para dos páginas A4; si agregas mucho texto, revisa la vista de impresión antes de enviarla.

@@ -37,9 +37,9 @@ async function copyText(id){
     area.style.opacity='0';
     document.body.appendChild(area);
     area.select();
-    document.execCommand('copy');
+    const copied=document.execCommand('copy');
     area.remove();
-    notify();
+    notify(copied ? 'Copiado ✓' : 'Selecciona y copia el texto manualmente');
   }
 }
 
@@ -67,4 +67,10 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModal();});
 
 let saved='1';
 try{ saved=localStorage.getItem('vision-current-step') || '1'; }catch(e){}
-showStep(saved);
+showStep(['1','2','3','4','5','6','7'].includes(saved) ? saved : '1');
+
+document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
+ const category=button.dataset.filter;
+ document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});
+ document.querySelectorAll('[data-category]').forEach(card=>card.hidden=category!=='Todas'&&card.dataset.category!==category);
+}));

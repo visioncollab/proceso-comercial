@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Generador de cotizaciones de Vision Collaborating">
+  <title>Generador de cotizaciones | Vision Collaborating</title>
+  <meta name="theme-color" content="#6220B5">
+  <link rel="icon" href="assets/vision-morado.png">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <style>
+    :root{
+      --bg:#eeeaf3;
+      --panel:#17131f;
+      --paper:#fff;
+      --ink:#201c25;
+      --muted:#716a78;
+      --purple:#7c3aed;
+      --purple-2:#a855f7;
+      --mint:#25c98b;
+      --line:#ddd6e3;
+      --soft:#f6f2fa;
+      --danger:#d9485f;
+      --shadow:0 24px 70px rgba(49,35,66,.18);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    button,input,textarea,select{font:inherit}
+    button{cursor:pointer}
+    .app{display:grid;grid-template-columns:410px minmax(0,1fr);min-height:100vh}
+    .editor{
+      background:var(--panel);color:#fff;padding:24px;overflow:auto;height:100vh;position:sticky;top:0
+    }
+    .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+    .brand-mark{
+      width:46px;height:46px;border-radius:15px;display:grid;place-items:center;
+      background:#fff;overflow:hidden;box-shadow:0 10px 30px rgba(124,58,237,.28)
+    }
+    .brand-mark img{width:88%;height:88%;object-fit:contain;display:block}
+    .brand h1{font-size:18px;margin:0}
+    .brand p{margin:3px 0 0;color:#bdb4c8;font-size:12px}
+    .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+    .btn{
+      border:0;border-radius:13px;padding:12px 14px;font-weight:800;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px
+    }
+    .btn-primary{background:var(--purple);color:#fff}
+    .btn-light{background:#fff;color:var(--panel)}
+    .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.12)}
+    .btn-danger{background:rgba(217,72,95,.14);color:#ff95a6;border:1px solid rgba(217,72,95,.25)}
+    .section-editor{border-top:1px solid rgba(255,255,255,.1);padding-top:18px;margin-top:18px}
+    .section-editor h2{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:#cfc5da;margin:0 0 12px}
+    .template-box{
+      background:linear-gradient(145deg,rgba(124,58,237,.18),rgba(168,85,247,.08));
+      border:1px solid rgba(184,147,255,.25);
+      border-radius:16px;padding:14px;margin-bottom:18px
+    }
+    .template-box h2{margin:0 0 9px;font-size:14px}
+    .template-box p{margin:0 0 10px;color:#cfc5da;font-size:12px;line-height:1.5}
+    label{display:block;font-size:12px;font-weight:700;color:#dcd4e5;margin-bottom:10px}
+    input,textarea,select{
+      width:100%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.07);
+      color:#fff;border-radius:11px;padding:10px 11px;outline:none;margin-top:6px
+    }
+    select option{color:#111}
+    input:focus,textarea:focus,select:focus{border-color:#b893ff;box-shadow:0 0 0 3px rgba(124,58,237,.18)}
+    textarea{resize:vertical;min-height:72px;line-height:1.45}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .repeat-list{display:grid;gap:8px}
+    .repeat-item{display:grid;grid-template-columns:1fr 36px;gap:7px}
+    .remove{
+      border:0;border-radius:10px;background:rgba(217,72,95,.16);color:#ff91a4;font-weight:900
+    }
+    .add{
+      margin-top:8px;width:100%;border:1px dashed rgba(255,255,255,.24);background:transparent;color:#cabed8;
+      padding:10px;border-radius:11px;font-weight:700
+    }
+    .workspace{padding:28px;overflow:auto}
+    .workspace-head{
+      max-width:900px;margin:0 auto 16px;display:flex;justify-content:space-between;align-items:center;gap:16px
+    }
+    .workspace-head h2{margin:0;font-size:18px}
+    .workspace-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+    .status{font-size:12px;color:var(--muted);background:#fff;border:1px solid var(--line);padding:9px 12px;border-radius:999px}
+    .pages{display:grid;gap:24px;justify-content:center}
+    .page{
+      width:210mm;min-height:297mm;background:var(--paper);box-shadow:var(--shadow);
+      padding:17mm 16mm 16mm;position:relative;overflow:hidden
+    }
+    .page::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:27mm;
+      background:linear-gradient(105deg,#3f24b4 0%,var(--purple) 45%,var(--purple-2) 100%)
+    }
+    .page .top-label{position:absolute;left:16mm;top:7mm;z-index:2;color:#fff;font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+    .proposal-code{display:inline-flex;align-items:center;gap:7px;margin-top:5px;padding:5px 9px;border-radius:999px;background:#f2ecff;color:#6d3bd1;font-size:9.5px;font-weight:800}
+    .proposal-code::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--mint)}
+    .page::after{
+      content:"";position:absolute;width:70mm;height:70mm;border-radius:50%;
+      background:rgba(255,255,255,.09);right:-20mm;top:-28mm
+    }
+    .quote-title{
+      position:absolute;top:6mm;right:16mm;color:#fff;font-size:30px;font-weight:900;letter-spacing:-.04em;z-index:2
+    }
+    .quote-title small{font-size:12px;display:block;text-align:right;font-weight:600;opacity:.78;letter-spacing:.05em}
+    .header-card{
+      margin-top:14mm;display:grid;grid-template-columns:28mm 1fr;gap:6mm;align-items:center;
+      border-bottom:2px solid #eee7f4;padding-bottom:7mm
+    }
+    .logo{
+      width:26mm;height:26mm;border-radius:50%;
+      overflow:hidden;background:#fff;
+      box-shadow:0 10px 24px rgba(124,58,237,.18);
+      border:2px solid rgba(124,58,237,.15)
+    }
+    .logo img{width:88%;height:88%;margin:6%;object-fit:contain;display:block}
+    .client-line{letter-spacing:-.02em}
+    .price-card{background:linear-gradient(135deg,#17131f,#44216f)}
+    .intro{border-left:5px solid var(--purple)}
+    .bank{transition:.2s}
+    .bank:hover{transform:translateY(-2px)}
+
+    .client-line{font-size:20px;font-weight:900;color:var(--purple);margin-bottom:3px}
+    .meta{display:grid;gap:3px;font-size:12px;color:var(--muted)}
+    .intro{
+      margin:8mm 0 7mm;padding:6mm;border-radius:14px;background:var(--soft);
+      color:#443b4b;text-align:center;line-height:1.65;font-size:13px
+    }
+    .section-title{
+      display:flex;align-items:center;gap:10px;font-weight:900;color:var(--purple);font-size:15px;margin:0 0 4mm
+    }
+    .section-title::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--mint)}
+    .service-list,.conditions-list{margin:0;padding:0;list-style:none;display:grid;gap:3.2mm}
+    .service-list li,.conditions-list li{display:grid;grid-template-columns:20px 1fr;gap:8px;line-height:1.45;font-size:12.4px}
+    .service-list li::before{
+      content:"✓";width:18px;height:18px;border-radius:6px;display:grid;place-items:center;
+      background:#e9f9f2;color:var(--mint);font-weight:900;font-size:11px
+    }
+    .conditions-list li::before{content:"—";font-weight:900;color:var(--purple)}
+    .price-card{
+      margin-top:8mm;padding:6mm;border-radius:18px;background:linear-gradient(135deg,#17131f,#44216f);color:#fff;
+      display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative;overflow:hidden
+    }
+    .price-card::after{content:"";position:absolute;width:34mm;height:34mm;border-radius:50%;right:-12mm;top:-16mm;background:rgba(255,255,255,.08)}
+    .price-copy{display:grid;gap:4px;position:relative;z-index:1}.price-copy small{font-size:9px;color:#bfb3cb;letter-spacing:.03em;text-transform:none}
+    .price-card strong{position:relative;z-index:1}
+    .price-card span{font-size:12px;color:#d6cedd;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+    .price-card strong{font-size:27px;color:#fff;white-space:nowrap}
+    .notes{margin-top:5mm;font-size:9.5px;line-height:1.5;color:#726a79;border-top:1px solid var(--line);padding-top:3mm}
+    .page-two{padding-top:34mm}
+    .bank-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-top:4mm}
+    .bank{padding:4mm;border:1px solid var(--line);border-radius:12px;background:#fff}
+    .bank b{display:block;font-size:11px;color:var(--purple);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+    .bank span{font-size:12px}
+    .signature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16mm;margin-top:17mm}
+    .signature{border-top:1px solid #777;padding-top:3mm;font-size:11px;line-height:1.55}
+    .signature strong{display:block;color:var(--purple);font-size:12px}
+    .accept-box{
+      margin-top:8mm;border:1px solid var(--line);background:var(--soft);border-radius:13px;padding:5mm;
+      font-size:11px;line-height:1.55
+    }
+    .footer{
+      position:absolute;left:16mm;right:16mm;bottom:8mm;display:flex;justify-content:space-between;
+      font-size:9px;color:#8d8592;border-top:1px solid #eee7f4;padding-top:3mm
+    }
+    [data-preview]{white-space:pre-wrap}
+    @media(max-width:1100px){
+      .app{grid-template-columns:1fr}
+      .editor{position:relative;height:auto}
+      .workspace{padding:18px}
+    }
+    @media(max-width:800px){
+      .page{width:210mm;transform:scale(.62);transform-origin:top center;margin-bottom:-112mm}
+      .workspace{overflow:hidden}
+      .workspace-head{align-items:flex-start;flex-direction:column}
+    }
+    @media print{
+      @page{
+        size:A4;
+        margin:0;
+      }
+
+      html,body{
+        margin:0!important;
+        padding:0!important;
+        background:#fff!important;
+        -webkit-print-color-adjust:exact!important;
+        print-color-adjust:exact!important;
+        color-adjust:exact!important;
+      }
+
+      *{
+        -webkit-print-color-adjust:exact!important;
+        print-color-adjust:exact!important;
+        color-adjust:exact!important;
+      }
+
+      .editor,.workspace-head{
+        display:none!important;
+      }
+
+      .app,.workspace,.pages{
+        display:block!important;
+        margin:0!important;
+        padding:0!important;
+        width:100%!important;
+        background:#fff!important;
+      }
+
+      .page{
+        width:210mm!important;
+        height:297mm!important;
+        min-height:297mm!important;
+        margin:0!important;
+        padding:15mm 14mm 13mm!important;
+        box-shadow:none!important;
+        page-break-after:always!important;
+        break-after:page!important;
+        overflow:hidden!important;
+        background:#fff!important;
+      }
+
+      .page-two{
+        padding-top:31mm!important;
+      }
+
+      .page::before{
+        height:26mm!important;
+        background:linear-gradient(100deg,#7c3aed,#a855f7 58%,#c27aff)!important;
+      }
+
+      .page::after{
+        display:block!important;
+      }
+
+      .quote-title{
+        top:6mm!important;
+        right:14mm!important;
+        font-size:27px!important;
+      }
+
+      .header-card{
+        margin-top:12mm!important;
+        grid-template-columns:24mm 1fr!important;
+        gap:5mm!important;
+        padding-bottom:5mm!important;
+      }
+
+      .logo{
+        width:23mm!important;
+        height:23mm!important;
+        font-size:32px!important;
+      }
+
+      .client-line{
+        font-size:18px!important;
+      }
+
+      .intro{
+        margin:5mm 0 5mm!important;
+        padding:4.5mm!important;
+        line-height:1.5!important;
+        font-size:11.5px!important;
+      }
+
+      .section-title{
+        margin-bottom:3mm!important;
+        font-size:13.5px!important;
+      }
+
+      .service-list,.conditions-list{
+        gap:2.2mm!important;
+      }
+
+      .service-list li,.conditions-list li{
+        font-size:10.6px!important;
+        line-height:1.35!important;
+        grid-template-columns:17px 1fr!important;
+        gap:6px!important;
+      }
+
+      .service-list li::before{
+        width:16px!important;
+        height:16px!important;
+        font-size:9px!important;
+      }
+
+      .price-card{
+        margin-top:5mm!important;
+        padding:4.5mm!important;
+      }
+
+      .price-card strong{
+        font-size:23px!important;
+      }
+
+      .notes{
+        margin-top:3.5mm!important;
+        padding-top:2.5mm!important;
+        font-size:8.7px!important;
+        line-height:1.4!important;
+      }
+
+      .bank-grid{
+        gap:3mm!important;
+        margin-top:3mm!important;
+      }
+
+      .bank{
+        padding:3mm!important;
+      }
+
+      .bank b{
+        font-size:9.8px!important;
+      }
+
+      .bank span{
+        font-size:10.5px!important;
+      }
+
+      .accept-box{
+        margin-top:5mm!important;
+        padding:4mm!important;
+        font-size:9.8px!important;
+        line-height:1.45!important;
+      }
+
+      .signature-grid{
+        margin-top:11mm!important;
+        gap:12mm!important;
+      }
+
+      .signature{
+        font-size:9.8px!important;
+        line-height:1.45!important;
+      }
+
+      .footer{
+        left:14mm!important;
+        right:14mm!important;
+        bottom:6mm!important;
+        font-size:8.2px!important;
+        padding-top:2mm!important;
+      }
+
+      .page:last-child{
+        page-break-after:auto!important;
+        break-after:auto!important;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/vision.css">
+</head>
+<body>
+<div class="app">
+  <aside class="editor">
+    <div class="brand">
+      <div class="brand-mark"><img src="assets/vision-morado.png" alt="VISION"></div>
+      <div><h1>Cotizador</h1><p>Propuestas comerciales</p></div>
+    </div>
+
+    <div class="template-box">
+      <h2>Tipo de cotización</h2>
+      <p>Selecciona un servicio y se cargará automáticamente una propuesta base. Luego podrás modificar todo.</p>
+      <select id="templateSelect" aria-label="Tipo de cotización">
+        <option value="admin_rrss">Administración de redes sociales</option>
+        <option value="facebook_ads">Facebook Ads</option>
+        <option value="tiktok">TikTok</option>
+        <option value="web">Página web</option>
+        <option value="marca_personal">Marca personal</option>
+        <option value="branding">Branding</option>
+        <option value="redes_sociales">Redes sociales</option>
+        <option value="google_ads">Google Ads</option>
+      </select>
+      <button class="btn btn-primary" id="applyTemplate" style="width:100%;margin-top:10px">Cargar contenido del servicio</button>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn btn-primary" id="printBtn">Exportar PDF</button>
+      <button class="btn btn-light" id="saveBtn">Guardar</button>
+      <button class="btn btn-ghost" id="newBtn">Nueva</button>
+      <button class="btn btn-danger" id="resetBtn">Restablecer</button>
+    </div>
+
+    <section class="section-editor">
+      <h2>Datos principales</h2>
+      <label>Cliente<input id="client" value="Nombre del cliente"></label>
+      <label>Asunto<input id="subject"></label>
+      <div class="row">
+        <label>Fecha<input id="date" type="date"></label>
+        <label>Vigencia<input id="validity" value="15 días"></label>
+      </div>
+      <label>Introducción<textarea id="intro"></textarea></label>
+      <div class="row">
+        <label>Moneda<select id="currency"><option>S/</option><option>US$</option></select></label>
+        <label>Precio<input id="price" value="0.00"></label>
+      </div>
+    </section>
+
+    <section class="section-editor">
+      <h2>Servicios incluidos</h2>
+      <div class="repeat-list" id="servicesEditor"></div>
+      <button class="add" data-add="services">+ Agregar servicio</button>
+    </section>
+
+    <section class="section-editor">
+      <h2>Notas del servicio</h2>
+      <div class="repeat-list" id="notesEditor"></div>
+      <button class="add" data-add="notes">+ Agregar nota</button>
+    </section>
+
+    <section class="section-editor">
+      <h2>Condiciones</h2>
+      <div class="repeat-list" id="conditionsEditor"></div>
+      <button class="add" data-add="conditions">+ Agregar condición</button>
+    </section>
+
+    <section class="section-editor">
+      <h2>Datos bancarios</h2>
+      <label>Interbank<input id="interbank" value="288-3025413504"></label>
+      <label>BCP<input id="bcp" value="19337313502005"></label>
+      <label>BBVA / Continental<input id="bbva" value="0011-0191-0200295781"></label>
+      <label>Yape / Plin<input id="yape" value="982006001 (Miguel Ramos)"></label>
+      <label>Comprobante<input id="receipt" value="Recibo por honorarios electrónico"></label>
+    </section>
+
+    <section class="section-editor">
+      <h2>Datos de contacto</h2>
+      <label>Nombre<input id="author" value="Miguel Ramos"></label>
+      <label>Empresa<input id="company" value="VISION COLLABORATING"></label>
+      <label>Celular<input id="phone" value="982006001"></label>
+      <label>Correo<input id="email" value="vision.networkingperu@gmail.com"></label>
+    </section>
+  </aside>
+
+  <main class="workspace">
+    <div class="workspace-head">
+      <div><h2>Vista previa</h2><p>La cotización se exportará en dos páginas A4.</p></div>
+      <div class="status" role="status" aria-live="polite" id="status">Cambios guardados automáticamente</div>
+    </div>
+
+    <div class="pages">
+      <article class="page">
+        <div class="top-label"><img src="assets/vision-blanco.png" alt="VISION"><span>Propuesta comercial</span></div>
+        <div class="quote-title">Cotización<small>VISION COLLABORATING</small></div>
+        <header class="header-card">
+          
+          <div>
+            <div class="client-line">Dirigido a: <span data-preview="client"></span></div><div class="proposal-code">Documento personalizado · Vigencia <span data-preview="validity"></span></div>
+            <div class="meta">
+              <span><b>Asunto:</b> <span data-preview="subject"></span></span>
+              <span><b>Fecha:</b> <span data-preview="date"></span></span>
+              <span><b>Vigencia:</b> <span data-preview="validity"></span></span>
+            </div>
+          </div>
+        </header>
+        <div class="intro" data-preview="intro"></div>
+        <h3 class="section-title">Nuestro servicio incluye</h3>
+        <ul class="service-list" id="servicesPreview"></ul>
+        <div class="price-card">
+          <div class="price-copy"><span>Inversión</span><small>Propuesta económica según el alcance detallado</small></div>
+          <strong><span data-preview="currency"></span> <span data-preview="price"></span></strong>
+        </div>
+        <div class="notes"><div id="notesPreview"></div></div>
+        <footer class="footer">
+          <span>Vision Collaborating · Marketing • Branding • Desarrollo Web</span>
+          <span>Página 1 de 2</span>
+        </footer>
+      </article>
+
+      <article class="page page-two">
+        <div class="top-label"><img src="assets/vision-blanco.png" alt="VISION"><span>Acuerdos y forma de pago</span></div>
+        <div class="quote-title">Condiciones<small>CLARIDAD DESDE EL INICIO</small></div>
+        <h3 class="section-title">Condiciones del servicio</h3>
+        <ul class="conditions-list" id="conditionsPreview"></ul>
+
+        <h3 class="section-title" style="margin-top:8mm">Datos bancarios</h3>
+        <div class="bank-grid">
+          <div class="bank"><b>Interbank</b><span data-preview="interbank"></span></div>
+          <div class="bank"><b>BCP</b><span data-preview="bcp"></span></div>
+          <div class="bank"><b>BBVA / Continental</b><span data-preview="bbva"></span></div>
+          <div class="bank"><b>Yape / Plin</b><span data-preview="yape"></span></div>
+        </div>
+        <p class="note"><b>Comprobante:</b> <span data-preview="receipt"></span>.</p>
+
+        <div class="accept-box">
+          <strong style="display:block;color:var(--purple);margin-bottom:4px">Aceptación de la propuesta</strong>
+          Al aceptar esta propuesta, el cliente declara haber revisado y estar de acuerdo con el alcance,
+          la inversión y las condiciones descritas en este documento.
+        </div>
+
+        <div class="signature-grid">
+          <div class="signature">
+            <strong data-preview="author"></strong>
+            <span data-preview="company"></span><br>
+            Cel.: <span data-preview="phone"></span><br>
+            Email: <span data-preview="email"></span>
+          </div>
+          <div class="signature">
+            <strong>Conformidad del cliente</strong>
+            Nombre y firma<br>
+            Fecha: ____________________
+          </div>
+        </div>
+
+        <footer class="footer">
+          <span>Vision Collaborating · <span data-preview="phone"></span></span>
+          <span>Página 2 de 2</span>
+        </footer>
+      </article>
+    </div>
+  </main>
+</div>
+
+<script>
+const commonConditions = [
+  "El horario de atención y coordinación es de lunes a viernes, de 9:00 a. m. a 6:00 p. m. No incluye sábados, domingos ni feriados.",
+  "La información, accesos y materiales necesarios deberán ser entregados por el cliente dentro de los plazos acordados.",
+  "Las propuestas deberán ser revisadas y aprobadas por el cliente antes de su publicación, activación o entrega final.",
+  "Los precios y condiciones comerciales de esta propuesta son confidenciales.",
+  "El pago se realiza por adelantado y de manera íntegra, salvo que se indique otro cronograma por escrito.",
+  "Ante un retraso de pago, el servicio podrá pausarse hasta regularizar el saldo pendiente.",
+  "Los cambios adicionales que superen el alcance descrito serán cotizados por separado.",
+  "Para finalizar un servicio mensual, el cliente deberá comunicarlo con al menos 15 días de anticipación."
+];
+
+const templates = {
+  admin_rrss:{
+    subject:"Administración de Redes Sociales",
+    intro:"Presentamos nuestra propuesta para la administración integral de redes sociales, enfocada en mantener una comunicación constante, profesional y alineada con los objetivos del negocio.",
+    price:"200.00",
+    services:[
+      "Estrategia de contenido personalizada según los objetivos de la marca.",
+      "Administración y configuración de Facebook, Instagram y LinkedIn.",
+      "Planificación de un calendario de contenidos semanal.",
+      "Diseño de 4 publicaciones semanales.",
+      "Redacción de textos, llamados a la acción y hashtags.",
+      "Retoque fotográfico básico del material proporcionado.",
+      "Edición básica de hasta 2 videos o animaciones por semana.",
+      "Programación y publicación del contenido aprobado.",
+      "Seguimiento de cuentas similares para generar mayor alcance.",
+      "Reporte quincenal con métricas y recomendaciones."
+    ],
+    notes:[
+      "El cliente deberá entregar fotografías, promociones e información con anticipación.",
+      "El retoque básico no incluye fotomontajes ni ediciones avanzadas.",
+      "La inversión publicitaria no está incluida."
+    ]
+  },
+  facebook_ads:{
+    subject:"Gestión de Campañas en Facebook e Instagram Ads",
+    intro:"Presentamos una propuesta para planificar, configurar y optimizar campañas publicitarias en Meta Ads, orientadas a generar alcance, mensajes, clientes potenciales o ventas.",
+    price:"250.00",
+    services:[
+      "Revisión y configuración del Business Manager.",
+      "Configuración de cuenta publicitaria, píxel y eventos básicos cuando corresponda.",
+      "Definición de objetivos de campaña.",
+      "Segmentación de públicos e intereses.",
+      "Creación de campañas y conjuntos de anuncios.",
+      "Configuración de anuncios con materiales proporcionados por el cliente.",
+      "Monitoreo y optimización semanal.",
+      "Recomendaciones de presupuesto publicitario.",
+      "Reporte de resultados y conclusiones."
+    ],
+    notes:[
+      "El presupuesto de inversión en Meta Ads se paga directamente a la plataforma y no está incluido.",
+      "La creación de fotografías, videos o landing pages se cotiza por separado.",
+      "Los resultados dependen del presupuesto, oferta, mercado y calidad del material."
+    ]
+  },
+  tiktok:{
+    subject:"Gestión y Contenido para TikTok",
+    intro:"Presentamos una propuesta para desarrollar una presencia activa en TikTok mediante contenido dinámico, cercano y adaptado al lenguaje de la plataforma.",
+    price:"250.00",
+    services:[
+      "Optimización del perfil de TikTok.",
+      "Definición de pilares de contenido.",
+      "Propuesta de ideas, tendencias y formatos.",
+      "Guiones breves para videos.",
+      "Edición básica de hasta 3 videos semanales.",
+      "Textos, hashtags y llamados a la acción.",
+      "Programación o publicación del contenido aprobado.",
+      "Seguimiento de tendencias relevantes.",
+      "Reporte mensual de rendimiento."
+    ],
+    notes:[
+      "El cliente deberá grabar y enviar el material en los formatos indicados.",
+      "Las grabaciones presenciales no están incluidas.",
+      "La viralidad no puede garantizarse."
+    ]
+  },
+  web:{
+    subject:"Diseño y Desarrollo de Página Web",
+    intro:"Presentamos nuestra propuesta para diseñar y desarrollar una página web moderna, clara y adaptable a celulares, orientada a presentar el negocio y generar consultas.",
+    price:"850.00",
+    services:[
+      "Diseño visual personalizado de la página web.",
+      "Desarrollo responsive para computadora, tablet y celular.",
+      "Página de inicio y secciones principales del negocio.",
+      "Botones de contacto y WhatsApp.",
+      "Formulario de contacto o cotización.",
+      "Integración de redes sociales.",
+      "Optimización básica de velocidad y SEO.",
+      "Configuración de dominio y hosting proporcionados por el cliente.",
+      "Hasta 2 rondas de ajustes.",
+      "Entrega de la web lista para publicación."
+    ],
+    notes:[
+      "El dominio y hosting no están incluidos.",
+      "El cliente deberá proporcionar textos, fotografías y logotipo.",
+      "Funciones especiales, tiendas virtuales o sistemas se cotizan por separado.",
+      "El plazo empieza cuando se recibe toda la información."
+    ]
+  },
+  marca_personal:{
+    subject:"Desarrollo de Marca Personal",
+    intro:"Presentamos una propuesta para construir y ordenar una marca personal profesional, con una comunicación clara, coherente y reconocible en medios digitales.",
+    price:"600.00",
+    services:[
+      "Sesión estratégica para definir objetivos y posicionamiento.",
+      "Definición de propuesta de valor personal.",
+      "Identificación del público objetivo.",
+      "Definición de tono de comunicación.",
+      "Concepto visual de la marca personal.",
+      "Paleta de colores y tipografías.",
+      "Diseño de foto de perfil, portada y piezas base.",
+      "Optimización de biografía para redes sociales.",
+      "Pilares e ideas de contenido.",
+      "Guía breve de uso de la marca personal."
+    ],
+    notes:[
+      "No incluye sesión fotográfica profesional.",
+      "La gestión mensual de redes sociales se cotiza por separado.",
+      "Incluye hasta 2 rondas de ajustes sobre la propuesta seleccionada."
+    ]
+  },
+  branding:{
+    subject:"Diseño de Identidad Visual y Branding",
+    intro:"Presentamos nuestra propuesta para desarrollar una identidad visual coherente y profesional que represente la personalidad, valores y objetivos de la marca.",
+    price:"750.00",
+    services:[
+      "Reunión de descubrimiento y análisis de la marca.",
+      "Definición de concepto visual.",
+      "Diseño de logotipo principal.",
+      "Versiones secundarias y reducidas del logotipo.",
+      "Paleta de colores corporativos.",
+      "Selección de tipografías.",
+      "Aplicaciones básicas de marca.",
+      "Manual de identidad visual.",
+      "Entrega de archivos en formatos JPG, PNG y PDF.",
+      "Hasta 2 rondas de ajustes."
+    ],
+    notes:[
+      "No incluye registro de marca ante Indecopi.",
+      "Piezas adicionales como empaques, catálogos o uniformes se cotizan por separado.",
+      "Los archivos editables se entregan una vez cancelado el proyecto."
+    ]
+  },
+  redes_sociales:{
+    subject:"Diseño de Contenido para Redes Sociales",
+    intro:"Presentamos una propuesta para crear contenido visual y textos para redes sociales, manteniendo una imagen ordenada y coherente con la identidad de la marca.",
+    price:"180.00",
+    services:[
+      "Diseño de línea gráfica para publicaciones.",
+      "Diseño de 4 piezas semanales.",
+      "Adaptación para Facebook e Instagram.",
+      "Redacción de textos para cada publicación.",
+      "Búsqueda de hashtags y palabras clave.",
+      "Diseño de historias complementarias.",
+      "Entrega semanal para revisión.",
+      "Hasta una ronda de ajustes por publicación."
+    ],
+    notes:[
+      "No incluye administración ni publicación en las cuentas.",
+      "El cliente deberá proporcionar información y material gráfico.",
+      "Videos, reels y animaciones se cotizan por separado."
+    ]
+  },
+  google_ads:{
+    subject:"Gestión de Campañas en Google Ads",
+    intro:"Presentamos nuestra propuesta para crear y optimizar campañas en Google Ads, orientadas a captar personas que buscan activamente los productos o servicios del negocio.",
+    price:"300.00",
+    services:[
+      "Revisión o configuración de la cuenta de Google Ads.",
+      "Análisis inicial de servicios y objetivos.",
+      "Investigación de palabras clave.",
+      "Creación de campañas de búsqueda.",
+      "Redacción de anuncios.",
+      "Configuración de ubicaciones, horarios y presupuesto.",
+      "Configuración básica de conversiones cuando sea posible.",
+      "Monitoreo y optimización periódica.",
+      "Exclusión de palabras clave irrelevantes.",
+      "Reporte mensual de resultados."
+    ],
+    notes:[
+      "La inversión publicitaria se paga directamente a Google y no está incluida.",
+      "La calidad de la página web influye directamente en el rendimiento.",
+      "El diseño o desarrollo de landing pages se cotiza por separado."
+    ]
+  }
+};
+
+let data = {};
+try { data = JSON.parse(localStorage.getItem("visionQuoteDataMulti") || "null") || {}; } catch (_) {}
+let currentTemplate = data.currentTemplate || "admin_rrss";
+
+const fields = ["client","subject","date","validity","intro","currency","price","interbank","bcp","bbva","yape","receipt","author","company","phone","email"];
+
+function dateText(value){
+  if(!value) return "";
+  const [y,m,d]=value.split("-");
+  return new Date(Number(y),Number(m)-1,Number(d)).toLocaleDateString("es-PE",{day:"numeric",month:"long",year:"numeric"});
+}
+
+function applyTemplate(key, preserveClient=true){
+  const t=templates[key];
+  currentTemplate=key;
+  const keep = {};
+  if(preserveClient){
+    ["client","date","validity","currency","interbank","bcp","bbva","yape","receipt","author","company","phone","email"].forEach(id=>{
+      keep[id]=document.getElementById(id)?.value || data[id];
+    });
+  }
+  data = {
+    ...data,
+    ...keep,
+    currentTemplate:key,
+    subject:t.subject,
+    intro:t.intro,
+    price:t.price,
+    services:[...t.services],
+    notes:[...t.notes],
+    conditions:[...commonConditions]
+  };
+  syncFields();
+  ["services","notes","conditions"].forEach(renderList);
+  save(true);
+}
+
+function syncFields(){
+  fields.forEach(id=>{
+    const input=document.getElementById(id);
+    let value=data[id];
+    if(value===undefined || value===""){
+      if(id==="date") value=new Date().toISOString().slice(0,10);
+      else value=input.value;
+    }
+    input.value=value;
+    document.querySelectorAll(`[data-preview="${id}"]`).forEach(el=>{
+      el.textContent=id==="date" ? dateText(value) : value;
+    });
+  });
+  document.getElementById("templateSelect").value=currentTemplate;
+}
+
+function renderList(type){
+  const editor=document.getElementById(type+"Editor");
+  editor.innerHTML="";
+  data[type]=(data[type] || []);
+  data[type].forEach((text,index)=>{
+    const row=document.createElement("div");
+    row.className="repeat-item";
+    const area=document.createElement("textarea");
+    area.value=text;
+    area.setAttribute("aria-label", `${type === "services" ? "Servicio" : type === "notes" ? "Nota" : "Condición"} ${index+1}`);
+    area.rows=2;
+    area.addEventListener("input",()=>{
+      data[type][index]=area.value;
+      save(false);
+      renderPreviewList(type);
+    });
+    const remove=document.createElement("button");
+    remove.className="remove";
+    remove.type="button";
+    remove.textContent="×";
+    remove.title="Eliminar";
+    remove.onclick=()=>{
+      data[type].splice(index,1);
+      renderList(type);
+      save(false);
+    };
+    row.append(area,remove);
+    editor.appendChild(row);
+  });
+  renderPreviewList(type);
+}
+
+function renderPreviewList(type){
+  const preview=document.getElementById(type+"Preview");
+  preview.innerHTML="";
+  (data[type] || []).forEach((text,index)=>{
+    const el=document.createElement(type==="notes" ? "div" : "li");
+    el.textContent=type==="notes" ? `${index+1}. ${text}` : text;
+    preview.appendChild(el);
+  });
+}
+
+function save(show=true){
+  fields.forEach(id=>data[id]=document.getElementById(id).value);
+  data.currentTemplate=currentTemplate;
+  try { localStorage.setItem("visionQuoteDataMulti",JSON.stringify(data)); }
+  catch (_) { document.getElementById("status").textContent="Guardado no disponible en este navegador"; return; }
+  if(show){
+    const status=document.getElementById("status");
+    status.textContent="Guardado correctamente";
+    setTimeout(()=>status.textContent="Cambios guardados automáticamente",1500);
+  }
+}
+
+fields.forEach(id=>{
+  const input=document.getElementById(id);
+  input.addEventListener("input",()=>{
+    data[id]=input.value;
+    document.querySelectorAll(`[data-preview="${id}"]`).forEach(el=>{
+      el.textContent=id==="date" ? dateText(input.value) : input.value;
+    });
+    save(false);
+  });
+});
+
+document.querySelectorAll("[data-add]").forEach(btn=>{
+  btn.onclick=()=>{
+    const type=btn.dataset.add;
+    data[type].push("Nuevo elemento");
+    renderList(type);
+    save(false);
+  };
+});
+
+document.getElementById("applyTemplate").onclick=()=>{
+  const key=document.getElementById("templateSelect").value;
+  if(confirm("¿Deseas cargar el contenido base de este servicio? Se reemplazarán los servicios, notas y condiciones actuales.")){
+    applyTemplate(key,true);
+  }
+};
+
+document.getElementById("saveBtn").onclick=()=>save(true);
+document.getElementById("printBtn").onclick=()=>{
+  save(false);
+  const status=document.getElementById("status");
+  status.textContent="En impresión, activa “Gráficos de fondo”";
+  setTimeout(()=>window.print(),180);
+  setTimeout(()=>status.textContent="Cambios guardados automáticamente",2500);
+};
+document.getElementById("newBtn").onclick=()=>{
+  if(confirm("¿Deseas crear una nueva cotización usando el tipo seleccionado?")){
+    const key=document.getElementById("templateSelect").value;
+    try { localStorage.removeItem("visionQuoteDataMulti"); } catch (_) {}
+    data={};
+    fields.forEach(id => { document.getElementById(id).value = document.getElementById(id).defaultValue || (id === "currency" ? "S/" : ""); });
+    applyTemplate(key,false);
+  }
+};
+document.getElementById("resetBtn").onclick=()=>{
+  if(confirm("¿Deseas eliminar los datos guardados y volver a la plantilla inicial?")){
+    try { localStorage.removeItem("visionQuoteDataMulti"); } catch (_) {}
+    location.reload();
+  }
+};
+
+if(!data.services){
+  data={
+    client:"Nombre del cliente",
+    date:new Date().toISOString().slice(0,10),
+    validity:"15 días",
+    currency:"S/",
+    interbank:"288-3025413504",
+    bcp:"19337313502005",
+    bbva:"0011-0191-0200295781",
+    yape:"982006001 (Miguel Ramos)",
+    receipt:"Recibo por honorarios electrónico",
+    author:"Miguel Ramos",
+    company:"VISION COLLABORATING",
+    phone:"982006001",
+    email:"vision.networkingperu@gmail.com"
+  };
+  applyTemplate("admin_rrss",false);
+}else{
+  syncFields();
+  ["services","notes","conditions"].forEach(renderList);
+  save(false);
+}
+
+function fitPreview(){
+ const pages=document.querySelector('.pages');
+ const scale=Math.min(1,pages.clientWidth / (210*96/25.4));
+ document.querySelectorAll('.page').forEach(page=>{
+   page.style.setProperty('--preview-scale',scale);
+   page.style.setProperty('--preview-gap',`${page.offsetHeight*(scale-1)}px`);
+ });
+}
+new ResizeObserver(fitPreview).observe(document.querySelector('.pages'));
+document.fonts.ready.then(fitPreview);
+</script>
+</body>
+</html>
